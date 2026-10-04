@@ -37,6 +37,7 @@ jobs:
           sed -i 's|</application>|    <meta-data android:name="com.google.mlkit.vision.DEPENDENCIES" android:value="subject_segment"/>\n    </application>|' $M
           sed -i 's|minSdk = flutter.minSdkVersion|minSdk = 24|' android/app/build.gradle.kts
           grep -n minSdk android/app/build.gradle.kts
+          if [ -d android_res ]; then cp -r android_res/* android/app/src/main/res/; fi
           cat $M
 
       - run: flutter pub get
