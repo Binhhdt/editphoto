@@ -23,7 +23,7 @@ jobs:
 
       - uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.24.5'
+          flutter-version: '3.32.8'
           channel: stable
 
       - name: Tao thu muc android
@@ -34,7 +34,6 @@ jobs:
           M=android/app/src/main/AndroidManifest.xml
           sed -i 's|<application|<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29"/>\n    <application android:requestLegacyExternalStorage="true"|' $M
           sed -i 's|android:label="photo_editor"|android:label="Photo Editor"|' $M
-          sed -i 's|org.jetbrains.kotlin.android" version "[0-9.]*"|org.jetbrains.kotlin.android" version "1.9.24"|' android/settings.gradle || true
           cat $M
 
       - run: flutter pub get
